@@ -1,7 +1,6 @@
 FROM golang:1.13-alpine3.10 as builder
 
-
-git LABEL stage=builder
+LABEL stage=builder
 
 ADD . /home/root
 WORKDIR /home/root
