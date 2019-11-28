@@ -7,10 +7,7 @@ WORKDIR /home/root
 ENV CGO_ENABLED=0
 RUN go build -mod=vendor  -o ./bin/server ./cmd/server
 
-
-FROM alpine:3.10
-WORKDIR /root/
-COPY --from=0 /home/root/bin/ ./
+WORKDIR /home/root/bin
 
 ENTRYPOINT ./server
 EXPOSE 8080
