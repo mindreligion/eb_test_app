@@ -1,4 +1,4 @@
-FROM golang:1.13-alpine3.10 AS builder
+FROM golang:1.13-alpine3.10
 
 LABEL stage=builder
 
@@ -10,7 +10,7 @@ RUN go build -mod=vendor  -o ./bin/server ./cmd/server
 
 FROM alpine:3.10
 WORKDIR /root/
-COPY --from=builder /home/root/bin/ ./
+COPY /home/root/bin/ ./
 
 ENTRYPOINT ./server
 EXPOSE 8080
