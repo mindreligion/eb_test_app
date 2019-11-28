@@ -10,7 +10,7 @@ RUN go build -mod=vendor  -o ./bin/server ./cmd/server
 
 FROM alpine:3.10
 WORKDIR /root/
-COPY /home/root/bin/ ./
+COPY --from=0 /home/root/bin/ ./
 
 ENTRYPOINT ./server
 EXPOSE 8080
